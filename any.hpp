@@ -117,7 +117,7 @@ namespace stl
     {
         auto* holder = dynamic_cast<const AnyHolder<T>*>(operand.holder_.get());
 
-        if (nullptr == operand.holder_)
+        if (nullptr == operand.holder_ || nullptr == holder)
         {
             throw std::bad_cast();
         }
@@ -130,7 +130,7 @@ namespace stl
     {
         auto* holder = dynamic_cast<AnyHolder<T>*>(operand.holder_.get());
         
-        if (nullptr == operand.holder_)
+        if (nullptr == operand.holder_ || nullptr == holder)
         {
             throw std::bad_cast();
         }
@@ -143,7 +143,7 @@ namespace stl
     {
         auto* holder = dynamic_cast<AnyHolder<T>*>(operand.holder_.get());
         
-        if (nullptr == operand.holder_)
+        if (nullptr == operand.holder_ || nullptr == holder)
         {
             throw std::bad_cast();
         }

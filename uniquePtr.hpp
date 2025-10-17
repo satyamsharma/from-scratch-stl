@@ -17,6 +17,16 @@ class UniquePtr
             uniquePtr.data = nullptr;
         }
 
+        UniquePtr& operator= (UniquePtr& uniquePtr) = delete;
+
+        UniquePtr& operator= (UniquePtr&& uniquePtr)
+        {
+            data = uniquePtr.data;
+            uniquePtr.data = nullptr;
+
+            return *this;
+        }
+
     private:
         T* data{nullptr};
 };

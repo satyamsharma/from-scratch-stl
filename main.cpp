@@ -17,6 +17,8 @@ int main()
 	// stl::UniquePtr
 	UniquePtr<int> ptr{new int{3}};
 	UniquePtr<int> ptr1{std::move(ptr)};
+	UniquePtr<int> ptr2{new int{4}};
+	ptr1 = std::move(ptr2);
 
 	// stl::SharedPtr
 	// stl::Allocator

@@ -1,5 +1,6 @@
 #include "any.hpp"
 #include "uniquePtr.hpp"
+#include "sharedPtr.hpp"
 #include <string>
 #include <iostream>
 
@@ -21,6 +22,11 @@ int main()
 	ptr1 = std::move(ptr2);
 
 	// stl::SharedPtr
+	stl::SharedPtr<int> sptr{new int{3}};
+	stl::SharedPtr<int> sptr1{std::move(sptr)};
+	stl::SharedPtr<int> sptr2{new int{4}};
+	ptr1 = std::move(ptr2);
+
 	// stl::Allocator
 	// std::HashMap
 

@@ -9,9 +9,17 @@ namespace stl
 
             SharedPtr(const SharedPtr& sharedPtr)
             {
-                data = sharedPtr.data;
-                (*sharedPtr.refCount)++;
-                refCount = sharedPtr.refCount;
+                if (sharedPtr.refCount)
+                {
+                    data = sharedPtr.data;
+                    (*sharedPtr.refCount)++;
+                    refCount = sharedPtr.refCount;
+                }
+                else
+                {
+                    data = nullptr;
+                    refCount = nullptr;
+                }
             }
 
             SharedPtr(SharedPtr&& sharedPtr) noexcept
@@ -38,9 +46,17 @@ namespace stl
                         data = nullptr;
                     }
 
-                    data = sharedPtr.data;
-                    (*sharedPtr.refCount)++;
-                    refCount = sharedPtr.refCount;
+                    if (sharedPtr.refCount)
+                    {
+                        data = sharedPtr.data;
+                        (*sharedPtr.refCount)++;
+                        refCount = sharedPtr.refCount;
+                    }
+                    else
+                    {
+                        data = nullptr;
+                        refCount = nullptr;
+                    }
                 }
 
                 return *this;
